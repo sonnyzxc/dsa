@@ -62,12 +62,12 @@ class Heap[T]:
         self._sift_up(len(self.data) - 1)
 
     def pop(self) -> T:
-        if len(self.data) == 0:
-            raise EmptyHeapError
-        elif len(self.data) == 1:
-            return self.data.pop()
-        val = self.data[0]
+        if not self.data:
+            raise EmptyHeapError("popping from empty heap.")
         last = self.data.pop()
+        if not self.data:
+            return last
+        val = self.data[0]
         self.data[0] = last
         self._sift_down(0)
         return val
