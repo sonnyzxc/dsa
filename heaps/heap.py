@@ -2,8 +2,9 @@ class EmptyHeapError(IndexError):
     pass
 
 class Heap[T]:
-    def __init__(self) -> None:
-        self.data: list[T] = []
+    def __init__(self, arr: list[T] | None = None) -> None:
+        self.data: list[T] = list(arr) if arr else []
+        self.heapify()
 
     def __repr__(self) -> str:
         return f"Heap({self.data})"
@@ -65,5 +66,9 @@ class Heap[T]:
         self._sift_down(0)
         return val
 
-    def heapify(self, arr) -> bool:
-        pass
+    def heapify(self) -> None:
+        last = self._parent(len(self.data) - 1)
+        if last is None:
+            return
+        for i in range(last, -1, -1):
+            self._sift_down(i)
