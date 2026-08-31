@@ -1,5 +1,4 @@
 import pytest
-
 from heap import EmptyHeapError, Heap
 
 
