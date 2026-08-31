@@ -41,21 +41,14 @@ class Heap[T]:
         left = self._left_child(index)
         while left < len(self.data):
             right = self._right_child(index)
-            if right < len(self.data):
-                smaller = left if self.data[left] < self.data[right] else right
-                if self.data[index] > self.data[smaller]:
-                    self._swap(index, smaller)
-                    index = smaller
-                    left = self._left_child(index)
-                else:
-                    break
-            else:
-                if self.data[index] > self.data[left]:
-                    self._swap(index, left)
-                    index = left
-                    left = self._left_child(index)
-                else:
-                    break
+            smaller = left
+            if right < len(self.data) and self.data[right] < self.data[left]:
+                smaller = right
+            if self.data[index] <= self.data[smaller]:
+                break
+            self._swap(index, smaller)
+            index = smaller
+            left = self._left_child(index)
 
     def push(self, value) -> None:
         self.data.append(value)
