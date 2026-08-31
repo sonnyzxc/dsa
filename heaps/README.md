@@ -48,14 +48,14 @@ repair routines that walk a single root-to-leaf path restoring the invariant.
 ## API
 
 ```python
-h = Heap()                # empty
-h = Heap([5, 3, 8, 1])    # heapified in O(n)
+h = Heap()  # empty
+h = Heap([5, 3, 8, 1])  # heapified in O(n)
 
 h.push(4)
-h.pop()                   # -> 1  (smallest); raises EmptyHeapError when empty
-h[0]                      # peek minimum
+h.pop()  # -> 1  (smallest); raises EmptyHeapError when empty
+h[0]  # peek minimum
 len(h)
-repr(h)                   # 'Heap([1, 3, 8, 5])'
+repr(h)  # 'Heap([1, 3, 8, 5])'
 ```
 
 ## Extensions

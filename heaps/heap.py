@@ -1,6 +1,7 @@
 class EmptyHeapError(IndexError):
     pass
 
+
 class Heap[T]:
     def __init__(self, arr: list[T] | None = None) -> None:
         self.data: list[T] = list(arr) if arr else []
