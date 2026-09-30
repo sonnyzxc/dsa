@@ -7,6 +7,7 @@ Known limitations:
 - O(n) latency spike on resize (incremental rehashing), and no shrinking
 """
 
+
 class ChainedHashSet[T: Hashable]:
     """HashSet using chaining via singly linked buckets"""
 

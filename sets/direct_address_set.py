@@ -11,11 +11,7 @@ class DirectAddressSet:
         return self._size
 
     def __contains__(self, x: object) -> bool:
-        return (
-            isinstance(x, int)
-            and 0 <= x < self._CAPACITY
-            and self._present[x]
-        )
+        return isinstance(x, int) and 0 <= x < self._CAPACITY and self._present[x]
 
     def _check(self, x: int) -> None:
         if not isinstance(x, int):
