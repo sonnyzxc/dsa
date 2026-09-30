@@ -1,8 +1,9 @@
 import random
 import pytest
 from direct_address_set import DirectAddressSet
+from chained_hash_set import ChainedHashSet
 
-IMPLEMENTATIONS = [DirectAddressSet]
+IMPLEMENTATIONS = [DirectAddressSet, ChainedHashSet]
 MAX_VALUE = 10**6 - 1
 
 
@@ -62,6 +63,17 @@ def test_readd_after_discard(s):
     s.add(5)
     assert 5 in s
     assert len(s) == 1
+
+
+def test_many_elements(s):
+    for x in range(5000):
+        s.add(x)
+    assert len(s) == 5000
+    assert all(x in s for x in range(5000))
+    for x in range(0, 5000, 2):
+        s.discard(x)
+    assert len(s) == 2500
+    assert all((x in s) == (x % 2 == 1) for x in range(5000))
 
 
 @pytest.mark.parametrize("seed", range(5))
