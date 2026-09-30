@@ -1,7 +1,8 @@
 import random
+
 import pytest
-from direct_address_set import DirectAddressSet
 from chained_hash_set import ChainedHashSet
+from direct_address_set import DirectAddressSet
 
 IMPLEMENTATIONS = [DirectAddressSet, ChainedHashSet]
 MAX_VALUE = 10**6 - 1
